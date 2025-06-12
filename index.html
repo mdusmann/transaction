@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Finance Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Welcome to Your Finance Dashboard</h1>
+  </header>
+  <div class="main-layout">
+  <div class="container">
+    <div class="top-section">
+      <div class="budget-section">
+        <h2>Set Monthly Budget</h2>
+        <input type="number" id="monthly-budget" placeholder="Enter monthly budget" />
+        <button onclick="setBudget()">Save</button>
+      </div>
+      <div class="filter-section">
+        <h3>Select Month:</h3>
+        <select id="month-select" onchange="render()"></select>
+      </div>
+    </div>
+    <div class="transaction-layout">
+      <!-- <div class="transaction-form"> -->
+    <h2>Add a Transaction</h2>
+    <input type="text" id="desc" placeholder="Description (e.g., Grocery, Rent)" />
+    <input type="number" id="amount" placeholder="Amount" />
+    <select id="currency">
+      <option value="₹">INR (₹)</option>
+      <option value="$">USD ($)</option>
+      <option value="€">EUR (€)</option>
+      <option value="£">GBP (£)</option>
+    </select>
+    <button onclick="addTransaction()">Add Transaction</button>
+       <!-- </div> -->
+    <div class="transaction-form"></div>
+    <aside class="sidebar">
+      <div class="section" id="paid-section">
+        <h4>Paid</h4>
+        <button onclick="highlightButton(this)">Paid To</button>
+        <button onclick="highlightButton(this)">Paid By</button>
+      </div>
+      <div class="section" id="app-section">
+        <h4>App</h4>
+        <button onclick="highlightButton(this)">Google Pay</button>
+        <button onclick="highlightButton(this)">Phone Pay</button>
+        <button onclick="highlightButton(this)">Cred</button>
+        <button onclick="highlightButton(this)">Paytm</button>
+        <button onclick="highlightButton(this)">Other</button>
+      </div>
+      <div class="section" id="loan-section">
+        <h4>Loan</h4>
+        <button onclick="highlightButton(this)">Given To</button>
+        <button onclick="highlightButton(this)">Need To Pay Back</button>
+      </div>
+    </div>
+  </div>
+
+      <h3>Transactions</h3>
+      <ul id="list"></ul>
+      <h3>Total: <span id="currency-label">$</span><span id="total">0</span></h3>
+  
+      <h3>Monthly Summary</h3>
+      <canvas id="monthlyChart" height="80"></canvas>
+
+      <div class="section">
+        <h4>Add Custom Option</h4>
+        <input type="text" id="custom-text" placeholder="Custom label" />
+        <select id="custom-category">
+          <option value="paid">Paid</option>
+          <option value="app">App</option>
+          <option value="loan">Loan</option>
+        </select>
+        <button onclick="addCustomOption()">Add</button>
+      </div>
+    </aside>
+  </div>
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
